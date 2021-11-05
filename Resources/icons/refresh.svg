@@ -8,6 +8,37 @@
     width="105.326pt"
     height="105.326pt"
     viewBox="0 0 105.326 105.326">
-<defs/>
-<path id="shape0" transform="matrix(1.00000010256939 0 0 0.852256836870851 52.6628625444541 13.1657164289518)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 77.2403"/><path id="shape1" transform="matrix(1.00000010256939 0 0 1.00000010256939 13.1657156361136 78.9942938166812)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 13.1657"/><path id="shape2" transform="matrix(1.00000010256939 0 0 1.00000010256939 92.1600094527948 78.9942938166812)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 13.1657"/><path id="shape3" transform="matrix(1.00000010256939 0 0 1.00000010256939 13.1657156361136 92.1600094527948)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M78.9943 0L0 0"/><path id="shape4" transform="matrix(1.33333347009251 0 0 1.42233807327833 26.3314312722271 59.245720362511)" fill="none" stroke="#ffffff" stroke-width="4.93714285714286" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.05714297294617" d="M19.7486 13.8846C13.1657 9.25639 6.58286 4.62819 0 0"/><path id="shape5" transform="matrix(1.33333347009251 0 0 1.43413597688141 52.6628625444541 59.245720362511)" fill="none" stroke="#ffffff" stroke-width="4.93714285714286" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.05714297294617" d="M0 13.7391L19.7486 0"/>
+<defs>
+  <marker id="lineMarker0" markerUnits="strokeWidth" refX="0" refY="0" markerWidth="3" markerHeight="3" orient="auto">
+      <defs/>
+   <g id="lineMarker0" fill="none">
+     <g id="lineMarker01" fill="none">
+      <g id="lineMarker01" fill="none">
+       <g id="lineMarker011" fill="none">
+        <g id="Arrow1Sstart" fill="none">
+         <path id="path4154" transform="matrix(0.2 0 0 0.2 -1.3 -1)" fill="#ffffff" fill-rule="evenodd" stroke="#ffffff" stroke-width="2.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" d="M12.5 5L17.5 0L0 5L17.5 10Z"/>
+        </g>
+       </g>
+      </g>
+     </g>
+    </g>
+  </marker>
+  <marker id="lineMarker1" markerUnits="strokeWidth" refX="0" refY="0" markerWidth="3" markerHeight="3" orient="auto">
+      <defs/>
+   <g id="lineMarker1" fill="none">
+     <g id="lineMarker11" fill="none">
+      <g id="lineMarker11" fill="none">
+       <g id="lineMarker111" fill="none">
+        <g id="lineMarker0" fill="none">
+         <g id="Arrow1Sstart" fill="none">
+          <path id="path4154" transform="matrix(0.2 0 0 0.2 -1.3 -1)" fill="#ffffff" fill-rule="evenodd" stroke="#ffffff" stroke-width="2.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" d="M12.5 5L17.5 0L0 5L17.5 10Z"/>
+         </g>
+        </g>
+       </g>
+      </g>
+     </g>
+    </g>
+  </marker>
+ </defs>
+<path id="shape0" transform="matrix(0.88358511162732 -0.432059674048762 0.427089527070064 0.873420895578587 19.3674539287131 69.0701474001755)" sodipodi:type="arc" sodipodi:rx="39.4971428571429" sodipodi:ry="39.4971428571429" sodipodi:cx="38.3980424821873" sodipodi:cy="1.01010743236417" sodipodi:start="6.2576083286942" sodipodi:end="2.90512969554044" sodipodi:open="true" d="M0 10.2629C4.73321 29.9051 23.5269 42.8083 43.5582 40.1687C63.5894 37.5291 78.399 20.1978 77.8823 6.66134e-16" fill="none" stroke="#ffffff" stroke-width="3.29142857142857" stroke-linecap="round" stroke-linejoin="bevel" marker-start="url(#lineMarker0)" krita:marker-fill-method="auto"/><path id="shape01" transform="matrix(-0.883585097827626 0.432059667300804 -0.427081559211776 -0.873404600883018 85.992254547829 36.3254784480494)" sodipodi:type="arc" sodipodi:rx="39.4971428571429" sodipodi:ry="39.4971428571429" sodipodi:cx="38.3980572226131" sodipodi:cy="1.09035641497003" sodipodi:start="6.25557584292441" sodipodi:end="2.90513128862005" sodipodi:open="true" d="M0 10.3431C4.73677 30.0003 23.5541 42.9057 43.5979 40.2437C63.6418 37.5817 78.4383 20.2121 77.8801 2.22045e-16" fill="none" stroke="#ffffff" stroke-width="3.29142857142857" stroke-linecap="round" stroke-linejoin="bevel" marker-start="url(#lineMarker1)" krita:marker-fill-method="auto"/>
 </svg>

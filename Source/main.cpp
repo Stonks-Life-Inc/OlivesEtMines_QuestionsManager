@@ -138,23 +138,28 @@ int main(int argc, const char* argv[])
 
     int x = 4, y = 4;
 
-    auto toolbarbutton_open = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
-    toolbarbutton_open->SetFontScale(2);
-    toolbarbutton_open->SetIcon(LoadIcon("https://raw.githubusercontent.com/Leadwerks/Documentation/master/Assets/Icons/open.svg"));
+    auto toolbarbutton_dl = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
+    toolbarbutton_dl->SetFontScale(2);
+    toolbarbutton_dl->SetIcon(LoadIcon(c_ICON_DL_URL));
+    x += c_TOOLBARHEIGHT;
+
+    auto toolbarbutton_push = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
+    toolbarbutton_push->SetFontScale(2);
+    toolbarbutton_push->SetIcon(LoadIcon(c_ICON_PUSH_URL));
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_save = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_save->SetFontScale(2);
-    toolbarbutton_save->SetIcon(LoadIcon("https://raw.githubusercontent.com/Leadwerks/Documentation/master/Assets/Icons/save.svg"));
+    toolbarbutton_save->SetIcon(LoadIcon(c_ICON_SAVES_URL));
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_options = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_options->SetFontScale(2);
-    toolbarbutton_options->SetIcon(LoadIcon("https://raw.githubusercontent.com/Leadwerks/Documentation/master/Assets/Icons/settings.svg"));
+    toolbarbutton_options->SetIcon(LoadIcon());
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_help = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
-    toolbarbutton_help->SetIcon(LoadIcon("https://raw.githubusercontent.com/Leadwerks/Documentation/master/Assets/Icons/help.svg"));
+    toolbarbutton_help->SetIcon(LoadIcon());
     toolbarbutton_help->SetFontScale(2);
 
 
