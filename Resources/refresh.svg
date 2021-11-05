@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="105.326pt"
+    height="105.326pt"
+    viewBox="0 0 105.326 105.326">
+<defs/>
+<path id="shape0" transform="matrix(1.00000010256939 0 0 0.852256836870851 52.6628625444541 13.1657164289518)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 77.2403"/><path id="shape1" transform="matrix(1.00000010256939 0 0 1.00000010256939 13.1657156361136 78.9942938166812)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 13.1657"/><path id="shape2" transform="matrix(1.00000010256939 0 0 1.00000010256939 92.1600094527948 78.9942938166812)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M0 0L0 13.1657"/><path id="shape3" transform="matrix(1.00000010256939 0 0 1.00000010256939 13.1657156361136 92.1600094527948)" fill="none" stroke="#ffffff" stroke-width="6.58285714285714" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="0" d="M78.9943 0L0 0"/><path id="shape4" transform="matrix(1.33333347009251 0 0 1.42233807327833 26.3314312722271 59.245720362511)" fill="none" stroke="#ffffff" stroke-width="4.93714285714286" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.05714297294617" d="M19.7486 13.8846C13.1657 9.25639 6.58286 4.62819 0 0"/><path id="shape5" transform="matrix(1.33333347009251 0 0 1.43413597688141 52.6628625444541 59.245720362511)" fill="none" stroke="#ffffff" stroke-width="4.93714285714286" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.05714297294617" d="M0 13.7391L19.7486 0"/>
+</svg>
