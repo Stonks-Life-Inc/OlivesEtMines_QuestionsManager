@@ -19,6 +19,14 @@ const int c_CONSOLEHEIGHT = 120;
 
 
 //Paths & URLS
-const UltraEngine::WString c_JSON_URL = L"https://github.com/Stonks-Life-Inc/Stonks-Life-Inc.github.io/blob/main/olivesetmines_questionnaire.json";
+const UltraEngine::WString c_JSON_URL = L"https://github.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/blob/main/Resources/questions.json";
 const UltraEngine::WString c_DEFAULT_DOC_PATH = UltraEngine::GetPath(UltraEngine::PATH_DOCUMENTS) + L"Olives Et Mines - Questionnaire Manager";
+//Icons
+const UltraEngine::WString c_ICON_ADD_URL = L"";
+const UltraEngine::WString c_ICON_DL_URL = L"";
+const UltraEngine::WString c_ICON_ERASER_URL = L"";
+const UltraEngine::WString c_ICON_IMPORT_URL = L"";
+const UltraEngine::WString c_ICON_PUSH_URL = L"";
+const UltraEngine::WString c_ICON_REFRESH_URL = L"";
+const UltraEngine::WString c_ICON_SAVES_URL = L"";
 #endif // !_GLOBAL_H
