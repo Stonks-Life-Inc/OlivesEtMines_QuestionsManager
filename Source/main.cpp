@@ -107,8 +107,9 @@ int main(int argc, const char* argv[])
     auto menu_file = CreateMenu("File", mainmenu);
     auto menu_file_dljson = CreateMenu("Download JSON", menu_file);
     auto menu_file_reloadjson = CreateMenu("Reload JSON", menu_file);
+    auto menu_file_push = CreateMenu("Save JSON to GitHub's servers", menu_file);
     CreateMenu("", menu_file);
-    auto menu_file_export = CreateMenu("Export JSON", menu_file);
+    auto menu_file_savejson = CreateMenu("Save JSON", menu_file);
     CreateMenu("", menu_file);
     auto menu_file_exit = CreateMenu("Exit", menu_file);
 
@@ -140,26 +141,26 @@ int main(int argc, const char* argv[])
 
     auto toolbarbutton_dl = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_dl->SetFontScale(2);
-    toolbarbutton_dl->SetIcon(LoadIcon(c_ICON_DL_URL));
+    toolbarbutton_dl->SetIcon(LoadIcon(c_ICON_DL_URL), PIXMAP_CONTAIN);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_push = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_push->SetFontScale(2);
-    toolbarbutton_push->SetIcon(LoadIcon(c_ICON_PUSH_URL));
+    toolbarbutton_push->SetIcon(LoadIcon(c_ICON_PUSH_URL), PIXMAP_CONTAIN);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_save = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_save->SetFontScale(2);
-    toolbarbutton_save->SetIcon(LoadIcon(c_ICON_SAVES_URL));
+    toolbarbutton_save->SetIcon(LoadIcon(c_ICON_SAVES_URL), PIXMAP_CONTAIN);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_options = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_options->SetFontScale(2);
-    toolbarbutton_options->SetIcon(LoadIcon());
+    toolbarbutton_options->SetIcon(LoadIcon(c_ICON_COG_URL), PIXMAP_CONTAIN);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_help = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
-    toolbarbutton_help->SetIcon(LoadIcon());
+    toolbarbutton_help->SetIcon(LoadIcon(c_ICON_HELP_URL), PIXMAP_CONTAIN);
     toolbarbutton_help->SetFontScale(2);
 
 
@@ -263,9 +264,13 @@ int main(int argc, const char* argv[])
                     EmitEvent(EVENT_WIDGETACTION, menu_file_dljson);
                 }
 
-                else if (ev.source == toolbarbutton_open)
+                else if (ev.source == toolbarbutton_dl)
                 {
-                    EmitEvent(EVENT_WIDGETACTION, menu_file_dljson);
+                    EmitEvent(EVENT_WIDGETACTION, menu_file_push);
+                }
+                else if (ev.source == toolbarbutton_push)
+                {
+                    EmitEvent(EVENT_WIDGETACTION, menu_tools_pushjson);
                 }
                 else if (ev.source == toolbarbutton_save)
                 {

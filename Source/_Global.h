@@ -19,14 +19,14 @@ const int c_CONSOLEHEIGHT = 120;
 
 
 //Paths & URLS
-const UltraEngine::WString c_JSON_URL = L"https://github.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/blob/main/Resources/questions.json";
+const UltraEngine::WString c_JSON_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/questions.json";
 const UltraEngine::WString c_DEFAULT_DOC_PATH = UltraEngine::GetPath(UltraEngine::PATH_DOCUMENTS) + L"Olives Et Mines - Questionnaire Manager";
 //Icons
 const UltraEngine::WString c_ICON_ADD_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/add.svg";
-const UltraEngine::WString c_ICON_COG_URL = L"";
+const UltraEngine::WString c_ICON_COG_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/cog.svg";
 const UltraEngine::WString c_ICON_DL_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/dl.svg";
 const UltraEngine::WString c_ICON_ERASER_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/eraser.svg";
-const UltraEngine::WString c_ICON_HELP_URL = L"";
+const UltraEngine::WString c_ICON_HELP_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/help.svg";
 //const UltraEngine::WString c_ICON_IMPORT_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/import.svg"; //Unused import icon. Replaced by c_ICON_SAVES_URL icon
 const UltraEngine::WString c_ICON_PUSH_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/push.svg";
 const UltraEngine::WString c_ICON_REFRESH_URL = L"https://raw.githubusercontent.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/main/Resources/icons/refresh.svg";
