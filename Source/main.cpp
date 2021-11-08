@@ -8,7 +8,8 @@ void PopulateTree(shared_ptr<Widget> node)
     
 }
 
-void loadJSONfromGH() {
+//Downloading JSON from GitHub
+void dlReloadJSON() {
     Print("Downloading...");
     if (DownloadFile(c_JSON_URL, c_DEFAULT_DOC_PATH))
     {
@@ -22,7 +23,16 @@ void loadJSONfromGH() {
     }
 }
 
-static void AppSetupManager(std::shared_ptr<Widget> advLabel, std::shared_ptr<Widget> advPB, bool GUISetup, bool dlJsonGithub, bool loadJson, bool populateTree) {
+
+//Function to load the set-up window (progress bar)
+//Disable the main window
+//First: load the main interface
+//Download the .JSON file from GitHub
+//Load the JSON file 
+//Populate the tree view
+static void AppSetupManager(std::shared_ptr<Window> setupWindow, std::shared_ptr<Window> mainWindow,std::shared_ptr<Widget> advLabel, std::shared_ptr<Widget> advPB, bool GUISetup, bool dlJsonGithub, bool loadJson, bool populateTree) {
+    setupWindow->Activate();
+    
     float progressVal = 0;
     short totalProgressPart = GUISetup + dlJsonGithub + loadJson + populateTree;
     Print(totalProgressPart);
@@ -36,7 +46,7 @@ static void AppSetupManager(std::shared_ptr<Widget> advLabel, std::shared_ptr<Wi
     if (dlJsonGithub) {
         advLabel->SetText(L"Downloading question JSON file from GitHub's servers...");
         
-        loadJSONfromGH();
+        dlReloadJSON();
 
         progressVal += 1;
         advPB->SetProgress(progressVal / totalProgressPart);
@@ -60,6 +70,10 @@ static void AppSetupManager(std::shared_ptr<Widget> advLabel, std::shared_ptr<Wi
         advPB->SetProgress(progressVal / totalProgressPart);
         Print(L"Progress = " + WString(progressVal / totalProgressPart));
     }
+    setupWindow->Disable();
+    setupWindow->Hide();
+    mainWindow->Activate();
+    mainWindow->Enable();
 }
 
 
@@ -90,7 +104,7 @@ int main(int argc, const char* argv[])
     //Create a window
     auto mainWindow = CreateWindow(c_APP_NAME, 0, 0, 1024, 768, displays[0], WINDOW_CENTER | WINDOW_TITLEBAR | WINDOW_RESIZABLE);
     mainWindow->Disable();
-    mainWindow->SetMinSize(800, 600);
+    mainWindow->SetMinSize(1024, 768);
     //Create User Interface
     auto ui = CreateInterface(mainWindow);
 
@@ -100,16 +114,15 @@ int main(int argc, const char* argv[])
     //-------------------------------------------------------
     // Create main menu
     //-------------------------------------------------------
-
+#pragma region topMenu
     auto mainmenu = CreateMenu("", ui->root);
 
     //File menu
     auto menu_file = CreateMenu("File", mainmenu);
-    auto menu_file_dljson = CreateMenu("Download JSON", menu_file);
-    auto menu_file_reloadjson = CreateMenu("Reload JSON", menu_file);
+    auto menu_file_dlReloadJSON = CreateMenu("Download & reload JSON", menu_file);
     auto menu_file_push = CreateMenu("Save JSON to GitHub's servers", menu_file);
     CreateMenu("", menu_file);
-    auto menu_file_savejson = CreateMenu("Save JSON", menu_file);
+    auto menu_file_saveJSON = CreateMenu("Save JSON", menu_file);
     CreateMenu("", menu_file);
     auto menu_file_exit = CreateMenu("Exit", menu_file);
 
@@ -129,11 +142,12 @@ int main(int argc, const char* argv[])
     auto menu_help = CreateMenu("Help", mainmenu);
     auto menu_help_helpcontents = CreateMenu("Help Contents", menu_help);
     auto menu_help_about = CreateMenu("About", menu_help);
+#pragma endregion topMenu topbar menu
 
     //-------------------------------------------------------
     // Create toolbar
     //-------------------------------------------------------
-
+#pragma region toolBar
     auto toolbar = CreatePanel(0, mainmenu->size.y, sz.x, c_TOOLBARHEIGHT, ui->root);
     toolbar->SetLayout(1, 1, 1, 0);
 
@@ -141,29 +155,28 @@ int main(int argc, const char* argv[])
 
     auto toolbarbutton_dl = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_dl->SetFontScale(2);
-    toolbarbutton_dl->SetIcon(LoadIcon(c_ICON_DL_URL), PIXMAP_CONTAIN);
+    toolbarbutton_dl->SetIcon(LoadIcon(c_ICON_DL_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_push = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_push->SetFontScale(2);
-    toolbarbutton_push->SetIcon(LoadIcon(c_ICON_PUSH_URL), PIXMAP_CONTAIN);
+    toolbarbutton_push->SetIcon(LoadIcon(c_ICON_PUSH_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_save = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_save->SetFontScale(2);
-    toolbarbutton_save->SetIcon(LoadIcon(c_ICON_SAVES_URL), PIXMAP_CONTAIN);
+    toolbarbutton_save->SetIcon(LoadIcon(c_ICON_SAVES_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_options = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
     toolbarbutton_options->SetFontScale(2);
-    toolbarbutton_options->SetIcon(LoadIcon(c_ICON_COG_URL), PIXMAP_CONTAIN);
+    toolbarbutton_options->SetIcon(LoadIcon(c_ICON_COG_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT);
     x += c_TOOLBARHEIGHT;
 
     auto toolbarbutton_help = CreateButton("", x, y, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, c_TOOLBARHEIGHT - c_DEFAULT_BORDER, toolbar, BUTTON_TOOLBAR);
-    toolbarbutton_help->SetIcon(LoadIcon(c_ICON_HELP_URL), PIXMAP_CONTAIN);
+    toolbarbutton_help->SetIcon(LoadIcon(c_ICON_HELP_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT);
     toolbarbutton_help->SetFontScale(2);
-
-
+#pragma endregion toolBar
 
     //-------------------------------------------------------
     // Create status bar
@@ -189,15 +202,35 @@ int main(int argc, const char* argv[])
     //-------------------------------------------------------
     // Create main panel
     //-------------------------------------------------------
-
+#pragma region mainSectionPanel
     auto mainpanel = CreatePanel(c_SIDEPANELWIDTH + c_DEFAULT_BORDER, toolbar->position.y + toolbar->size.y, sz.x - c_SIDEPANELWIDTH - c_DEFAULT_BORDER * 2, sz.y - toolbar->size.y - toolbar->position.y - statusbar->size.y, ui->root, PANEL_BORDER);
     mainpanel->SetLayout(1, 1, 1, 1);
 
     y = c_DEFAULT_BORDER;
+
+    auto category_radio_btn_panel = CreatePanel(mainpanel->GetSize().x - 350, 0, 300, 128, mainpanel);
+    //category_radio_btn_panel->SetText(L"Category");
+    CreateLabel("Category :", c_DEFAULT_BORDER, y, 300, 20, category_radio_btn_panel, LABEL_LEFT | LABEL_MIDDLE);
+    
     CreateLabel("ID :", c_DEFAULT_BORDER, y, 300, 20, mainpanel, LABEL_LEFT | LABEL_MIDDLE);
     y += 20;
     auto question_id = CreateTextField(c_DEFAULT_BORDER, y, 128, 20, mainpanel);
     question_id->SetLayout(1, 1, 1, 0);
+
+    //Button radio for categories
+    short y_cat = y;
+    short x_cat = c_DEFAULT_BORDER;
+    short sizex_cat = category_radio_btn_panel->GetSize().x / 2 - c_DEFAULT_BORDER;
+    auto category_radio_sp = CreateButton(L"Singleplayer", x_cat, y_cat, sizex_cat, 20, category_radio_btn_panel, BUTTON_RADIO);
+    x_cat += sizex_cat;
+    auto category_radio_mp = CreateButton(L"Two players", x_cat, y_cat, sizex_cat, 20, category_radio_btn_panel, BUTTON_RADIO);
+    x_cat -= sizex_cat;
+    y_cat += 20;
+    auto category_radio_all = CreateButton(L"All players", x_cat, y_cat, sizex_cat, 20, category_radio_btn_panel, BUTTON_RADIO);
+    x_cat += sizex_cat;
+    auto category_radio_game = CreateButton(L"Game", x_cat, y_cat, sizex_cat, 20, category_radio_btn_panel, BUTTON_RADIO);
+    x_cat -= sizex_cat;
+    y_cat += 20;
 
     y += question_id->GetSize().y;
     CreateLabel("Title :", c_DEFAULT_BORDER, y, 300, 20, mainpanel, LABEL_LEFT | LABEL_MIDDLE);
@@ -214,8 +247,10 @@ int main(int argc, const char* argv[])
     auto register_panel = CreatePanel(0, mainpanel->GetSize().y - c_STATUSBARHEIGHT - c_DEFAULT_BORDER, mainpanel->GetSize().x, c_STATUSBARHEIGHT, mainpanel);
     register_panel->SetLayout(1, 1, 0, 1);
 
-    auto register_refreshForm = CreateButton("Refresh", c_DEFAULT_BORDER, 0, 96, 32, register_panel);
-    auto register_addQuestion = CreateButton("Add question", c_DEFAULT_BORDER *2 + register_refreshForm->GetSize().x, 0, 128, 32, register_panel);
+    auto register_refreshForm = CreateButton("", c_DEFAULT_BORDER, 0, 32, 32, register_panel);
+    register_refreshForm->SetIcon(LoadIcon(c_ICON_REFRESH_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT*.5);
+    auto register_addQuestion = CreateButton("", c_DEFAULT_BORDER *2 + register_refreshForm->GetSize().x, 0, 32, 32, register_panel);
+    register_addQuestion->SetIcon(LoadIcon(c_ICON_ADD_URL), PIXMAP_CENTER, c_ICONS_SIZE_MULT*.5);
 
 
 
@@ -229,15 +264,13 @@ int main(int argc, const char* argv[])
     auto shortcut_randomPlayer = CreateButton("Random player", x, y, 96, 32, shortcut_panel, BUTTON_DEFAULT);
     x += 96 + c_DEFAULT_BORDER;
     auto shortcut_nbSip = CreateButton("# sips", x, y, 48, 32, shortcut_panel, BUTTON_DEFAULT);
+#pragma endregion mainSectionPanel Main form section panel 
 
+    //Startup setting window switched to main window
+    
+    AppSetupManager(setupWindow, mainWindow, advancmentLabel, advancementProgressbar, 1, 1, 1, 1);
+   
 
-
-    setupWindow->Activate();
-    AppSetupManager(advancmentLabel, advancementProgressbar, 1, 1, 1, 1);
-    setupWindow->Disable();
-    setupWindow->Hide();
-    mainWindow->Activate();
-    mainWindow->Enable();
 #pragma endregion mainWindow
  
 #pragma region mainLoop
@@ -247,34 +280,79 @@ int main(int argc, const char* argv[])
         switch (ev.id)
         {
             case EVENT_WIDGETACTION:
-                if (ev.source == menu_file_exit)
+
+                //Topbar menu actions
+                //Files menu
+#pragma region menuActions
+                //File menu
+                if(ev.source == menu_file_dlReloadJSON) 
+                {
+                    AppSetupManager(setupWindow, mainWindow, advancmentLabel, advancementProgressbar,0,1,1,1);
+                }
+                else if(ev.source == menu_file_push) 
+                {
+
+                }
+                else if(ev.source == menu_file_saveJSON) 
+                {
+
+                }
+                else if(ev.source == menu_file_exit) 
                 {
                     EmitEvent(EVENT_WINDOWCLOSE, mainWindow);
                 }
-                else if (ev.source == menu_help_helpcontents)
+                
+                //Edit menu
+                else if(ev.source == menu_edit_newquestion) 
                 {
-                    RunFile("https://www.ultraengine.com/learn");
-                }
-                else if (ev.source == menu_help_about)
-                {
-                    Notify("Ultra App Kit");
-                }
-                else if(ev.source == menu_tools_dljson)
-                {
-                    EmitEvent(EVENT_WIDGETACTION, menu_file_dljson);
-                }
 
-                else if (ev.source == toolbarbutton_dl)
+                }
+                else if(ev.source == menu_edit_newcategory) 
+                {
+                    
+                }
+                else if(ev.source == menu_edit_options) 
+                {
+
+                }
+                 
+                //Tools menu
+                else if(ev.source == menu_tools_dljson) 
+                {
+                    EmitEvent(EVENT_WIDGETACTION, menu_file_dlReloadJSON);
+                }
+                else if(ev.source == menu_tools_pushjson) 
                 {
                     EmitEvent(EVENT_WIDGETACTION, menu_file_push);
                 }
+                 
+                //Help menu
+                else if(ev.source == menu_help_helpcontents) 
+                {
+                    RunFile("https://github.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/wiki");
+                }
+                else if(ev.source == menu_help_about)
+                {
+                    RunFile("https://github.com/Stonks-Life-Inc/OlivesEtMines_QuestionsManager/wiki");
+                }
+
+               
+                
+#pragma endregion menuActions Topbar menu actions
+
+                //Toolbar buttons actions
+ #pragma region toolbarButtonsActions
+                else if (ev.source == toolbarbutton_dl)
+                {
+                    EmitEvent(EVENT_WIDGETACTION, menu_file_dlReloadJSON);
+                }
                 else if (ev.source == toolbarbutton_push)
                 {
-                    EmitEvent(EVENT_WIDGETACTION, menu_tools_pushjson);
+                    EmitEvent(EVENT_WIDGETACTION, menu_file_push);
                 }
                 else if (ev.source == toolbarbutton_save)
                 {
-                    EmitEvent(EVENT_WIDGETACTION, menu_tools_pushjson);
+                    EmitEvent(EVENT_WIDGETACTION, menu_file_saveJSON);
                 }
                 else if (ev.source == toolbarbutton_options)
                 {
@@ -284,6 +362,7 @@ int main(int argc, const char* argv[])
                 {
                     EmitEvent(EVENT_WIDGETACTION, menu_help_helpcontents);
                 }
+#pragma endregion toolbarButtonsActions Tool bar buttons actions
                 break;
             case EVENT_WIDGETSELECT:
                 
